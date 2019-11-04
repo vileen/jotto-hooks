@@ -27,5 +27,6 @@ describe('moxios tests', () => {
     await getSecretWord(mockSetSecretWord);
 
     // see whether mock ran with the correct argument
+    expect(mockSetSecretWord).toHaveBeenCalledWith(secretWord);
   })
 });
