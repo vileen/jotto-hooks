@@ -33,5 +33,15 @@ describe('getSecretWord calls', () => {
 
     // check to see if secret word was updated
     expect(mockGetSecretWord).toHaveBeenCalled();
-  })
+  });
+
+  it('secretWord does not update on App update', () => {
+    const wrapper = setup();
+
+    // wrapper.update() doesn't trigger update
+    // issue forked from https://github.com/airbnb/enzyme/issues/2091
+    wrapper.setProps();
+
+    expect(mockGetSecretWord).toHaveBeenCalledTimes(1); // only on setup
+  });
 });
